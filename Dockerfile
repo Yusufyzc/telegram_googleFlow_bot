@@ -55,6 +55,27 @@ COPY app/ ./app/
 # ── Dizinler ─────────────────────────────────────────────────────────────────
 RUN mkdir -p /data /data/profiles /data/chrome-profile /tmp/flow_videos
 
+# ── Openbox sağ tık menüsü ───────────────────────────────────────────────────
+RUN mkdir -p /root/.config/openbox && cat > /root/.config/openbox/menu.xml << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+  <menu id="root-menu" label="Openbox 3">
+    <item label="Open Chromium (Google Flow)">
+      <action name="Execute">
+        <command>bash -c "DISPLAY=:99 /opt/playwright-browsers/chromium-*/chrome-linux/chrome --no-sandbox --user-data-dir=/data/chrome-profile https://labs.google/fx/tools/flow &"</command>
+      </action>
+    </item>
+    <separator/>
+    <item label="Reconfigure">
+      <action name="Reconfigure"/>
+    </item>
+    <item label="Exit">
+      <action name="Exit"/>
+    </item>
+  </menu>
+</openbox_menu>
+EOF
+
 # ── Başlatma scripti ──────────────────────────────────────────────────────────
 COPY start.sh /start.sh
 RUN chmod +x /start.sh

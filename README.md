@@ -36,9 +36,7 @@ VNC_PASSWORD=flowbot123
 ```
 
 **Fernet key üretmek için:**
-```bash
-python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
-```
+"fernet key generator" yazıp rastgele bir key üretebilirsiniz.
 
 **Telegram User ID öğrenmek için:** Telegram'da @userinfobot'a yaz.
 
@@ -61,7 +59,7 @@ Tarayıcında şu adresi aç:
 http://localhost:6080/vnc.html
 ```
 
-Bağlan butonuna bas. VNC ekranında Chromium otomatik açılacak ve Google Flow proje sayfasına gidecek. Google hesabına giriş yap. Giriş tamamlandıktan sonra bu adımı bir daha yapman gerekmez — profil Docker volume'unda kalıcı olarak saklanır.
+Bağlan butonuna bas. VNC ekranında siyah masaüstü açılacak. **Sağ tıkla → "Open Chromium (Google Flow)"** seçeneğine tıkla. Chromium açılır ve Google Flow proje sayfasına gider. Google hesabına giriş yap. Giriş tamamlandıktan sonra bu adımı bir daha yapman gerekmez — profil Docker volume'unda kalıcı olarak saklanır.
 
 > **Not:** Container silinirse (`docker compose down -v`) giriş bilgileri de silinir ve bu adımı tekrar yapman gerekir. Sadece `docker compose down` (volume silmeden) kullanırsan giriş bilgileri korunur.
 
