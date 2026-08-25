@@ -1,0 +1,18 @@
+# ── Telegram Bot Framework ──────────────────────────────────────────────────
+aiogram==3.15.0
+
+# ── Google Flow API Wrapper ──────────────────────────────────────────────────
+# Playwright browser automation gerektirdiği için flow-py kaynak kodundan kurulur
+flow-py @ git+https://github.com/eddie-fqh/flow-py.git
+
+# ── Veritabanı ───────────────────────────────────────────────────────────────
+aiosqlite==0.20.0
+
+# ── Şifreleme ────────────────────────────────────────────────────────────────
+cryptography==43.0.3
+
+# ── Browser Automation (flow-py bağımlılığı) ─────────────────────────────────
+playwright==1.49.0
+
+# ── Ortam Değişkenleri ────────────────────────────────────────────────────────
+python-dotenv==1.0.1

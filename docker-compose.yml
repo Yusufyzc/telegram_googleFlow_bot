@@ -1,0 +1,46 @@
+version: "3.9"
+
+# ════════════════════════════════════════════════════════════════════════════
+# docker-compose.yml — Google Flow Telegram Bot (VNC destekli)
+#
+# Kullanım:
+#   1. cp .env.example .env  (ve değerleri doldur)
+#   2. docker compose up -d --build
+#   3. Tarayıcıda http://localhost:6080 aç, Chromium'da Google'a giriş yap
+#   4. Telegram'da /status ile oturumu doğrula
+# ════════════════════════════════════════════════════════════════════════════
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: flow_telegram_bot
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    environment:
+      - DISPLAY=:99
+      - VNC_PASSWORD=${VNC_PASSWORD:-flowbot123}
+
+    ports:
+      # noVNC web arayüzü — tarayıcıdan erişim
+      - "6080:6080"
+      # Ham VNC portu (isteğe bağlı, VNC istemcisi için)
+      - "5900:5900"
+
+    volumes:
+      # Kalıcı veri: SQLite + Chrome profili
+      - ./data:/data
+
+    shm_size: "1gb"
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

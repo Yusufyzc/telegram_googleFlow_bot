@@ -1,0 +1,32 @@
+# Ortam ve gizli veriler
+.env
+*.env
+
+# Veritabanı ve kullanıcı profilleri
+data/
+*.db
+*.sqlite3
+
+# Geçici video dosyaları
+/tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Playwright profilleri (her makineye özel)
+.flow-py/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+*.log
+
